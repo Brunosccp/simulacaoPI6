@@ -32,6 +32,7 @@ class LavaRapido:
 
 
         #final da simulação
+        print ("\nFINAL DO DIA:")
         self.pagarFuncionarios()
         self.clientesNaoAtendidos = totalClientes - self.clientesAtendidos    #calculando os clientes que não conseguiram ser atendido a tempo da loja fechar
 
@@ -39,7 +40,8 @@ class LavaRapido:
         print ("quantidade de clientes atendidos: ", self.clientesAtendidos)
         print ("quantidade de clientes não atendidos: ", self.clientesNaoAtendidos)
 
-        print ("tempo ocioso do funcionario:", self.funcionario[0].tempoOcioso)
+        for i in range(0, len(self.funcionario)):
+            print ("tempo ocioso do funcionario:", self.funcionario[i].tempoOcioso)
 
 
     def verificarProximoCliente(self):
