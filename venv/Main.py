@@ -5,8 +5,6 @@ def Main():
 
     lavaRapido = LavaRapido(1)
 
-    #print("tempo do lava rapido: ", lavaRapido.funcionario[2].ocupadoAte)
-
     lavaRapido.adicionarCliente(1)
     lavaRapido.adicionarCliente(2)
     lavaRapido.adicionarCliente(3)

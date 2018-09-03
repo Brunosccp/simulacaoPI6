@@ -19,6 +19,8 @@ class LavaRapido:
         self.listaClientes.append(Cliente(tipoCarro))
 
     def simularDia(self):
+        totalClientes = len(self.listaClientes)
+
         for i in range(1, 480 + 1): #480 minutos = 8 horas
             self.verificarProximoCliente()
 
@@ -31,11 +33,12 @@ class LavaRapido:
 
         #final da simulação
         self.pagarFuncionarios()
-        #self.clientesNaoAtendidos += len(self.listaClientes)    #calculando os clientes que não conseguiram ser atendido a tempo da loja fechar
+        self.clientesNaoAtendidos = totalClientes - self.clientesAtendidos    #calculando os clientes que não conseguiram ser atendido a tempo da loja fechar
 
         print("lucro: ", self.lucro)
         print ("quantidade de clientes atendidos: ", self.clientesAtendidos)
-        print ("quantidade de clientes não atendidos: ", len(self.listaClientes))
+        print ("quantidade de clientes não atendidos: ", self.clientesNaoAtendidos)
+
         print ("tempo ocioso do funcionario:", self.funcionario[0].tempoOcioso)
 
 
@@ -53,7 +56,6 @@ class LavaRapido:
                         if(self.listaClientes[0].tipoCarro == 1):   #se for automovel pequeno
                             if(self.tempoAberto + 30 > 480):    #se nao tiver tempo para fazer no dia, dispensa cliente
                                 self.listaClientes.pop(0)
-                                self.clientesNaoAtendidos += 1
                                 print("nao atendeu, nao atendidos: ",self.clientesNaoAtendidos)
                                 return
 
@@ -64,7 +66,6 @@ class LavaRapido:
                         if(self.listaClientes[0].tipoCarro == 2):   #se for automovel médio
                             if(self.tempoAberto + 40 > 480):    #se nao tiver tempo para fazer no dia, dispensa cliente
                                 self.listaClientes.pop(0)
-                                self.clientesNaoAtendidos += 1
                                 return
 
                             #funcionario pegando o servico do cliente
@@ -74,7 +75,6 @@ class LavaRapido:
                         if(self.listaClientes[0].tipoCarro == 3):   ##se for automovel grande
                             if(self.tempoAberto + 55 > 480):    #se nao tiver tempo para fazer no dia, dispensa cliente
                                 self.listaClientes.pop(0)
-                                self.clientesNaoAtendidos += 1
                                 return
 
                             #funcionario pegando o servico do cliente
